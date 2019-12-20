@@ -1,29 +1,37 @@
 <?php
 
 class Login_Controller extends CI_Controller{
+	public function __construct(){
+        parent::__construct();
+		$this->load->model(['M_admin','M_login']);
+    }
 
-	function logout(){
-		$this->session->sess_destroy();
-		redirect('home');
+	function index(){
+		$this->load->view('user/user-login-form');
 	}
 
-	public function login(){
-		$this->load->model('M_login');
+	function login(){
+		$user_data['logged_in'] = false;
 		$data = array(
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password')
 		);
 		$hasil = $this->M_login->loginAdmin($data);
 
-		if($hasil-> num_rows() > 0){
-			foreach ($hasil->result_array() as $sess) {
-				$sess_data['logged_in'] = 'sudah login';
-				$sess_data['username'] = $sess['username'];
-				$this->session->set_userdata($sess_data);
+		if($hasil->num_rows() > 0){
+			$user_data['logged_in'] = true;
+			foreach ($hasil->result_array() as $key => $value) {
+				$user_data['user_data'][$key] = $value;
 			}
-			redirect(base_url('Main_Controller/admin'));
+			$this->session->set_userdata('userdata', $user_data);
+			$this->load->view('dashboard');
 		}else{
 			redirect(base_url('Main_Controller/index'));
 		}
+	}
+
+	function logout(){
+		$this->session->sess_destroy();
+		redirect('home');
 	}
 }

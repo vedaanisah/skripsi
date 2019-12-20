@@ -26,6 +26,10 @@
 </head>
 
 <body>
+    <?php
+        $data = $this->session->userdata('userdata');
+        $user_data = $data['user_data'][0];
+    ?>
     <!-- Preloader -->
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
@@ -48,7 +52,7 @@
                         </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="<?php echo base_url('/assets/images/users/hritik.jpg')?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Maruti</b> </a>
+                        <a class="profile-pic" href="#"> <img src="<?php echo base_url('/assets/images/users/hritik.jpg')?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $user_data['nama_admin']?></b> </a>
                     </li>
                 </ul>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 class M_login extends CI_Model{	
+	
 	public function prosesslogin($username,$password){
 		$this->db->where('username',$username);
 		$this->db->where('password',$password);
@@ -8,6 +9,6 @@ class M_login extends CI_Model{
 	
 	}
 	function loginAdmin($data){
-		return $this->db->get_where('admin',$data);
+		return $this->db->get_where('admin', $data);
 	}
 }
