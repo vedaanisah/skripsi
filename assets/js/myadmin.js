@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log("myadmin: initialize!");
     $(function() {
         $(".preloader").fadeOut();
         $('#side-menu').metisMenu();
@@ -56,5 +57,15 @@ $(document).ready(function() {
         $(".open-close i").toggleClass("ti-arrow-circle-left");
         $(".logo span").toggle();
         $("body").toggleClass("content-wrapper");
+    });
+
+    $(window).on('click', function(event){
+        var _dropdown = $('.navbar-top-links').find('#dropdown-user-content');
+
+        if(!$(event.target).closest('.dropdown-user').length){
+            _dropdown.addClass('hide');
+        }else{
+            _dropdown.removeClass('hide');
+        }
     });
 });

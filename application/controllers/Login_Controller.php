@@ -7,6 +7,9 @@ class Login_Controller extends CI_Controller{
     }
 
 	function index(){
+		if(!empty($this->session->userdata('userdata')) || $this->session->has_userdata('userdata')){
+			redirect('administrator-page');
+		}
 		$this->load->view('user/user-login-form');
 	}
 
@@ -17,21 +20,20 @@ class Login_Controller extends CI_Controller{
 			'password' => $this->input->post('password')
 		);
 		$hasil = $this->M_login->loginAdmin($data);
-
+		
 		if($hasil->num_rows() > 0){
 			$user_data['logged_in'] = true;
 			foreach ($hasil->result_array() as $key => $value) {
 				$user_data['user_data'][$key] = $value;
 			}
 			$this->session->set_userdata('userdata', $user_data);
-			$this->load->view('dashboard');
-		}else{
-			redirect(base_url('Main_Controller/index'));
+			redirect('administrator-page');
 		}
+		$this->load->view('user/user-login-form', $user_data);
 	}
 
 	function logout(){
 		$this->session->sess_destroy();
-		redirect('home');
+		redirect('login-page');
 	}
 }

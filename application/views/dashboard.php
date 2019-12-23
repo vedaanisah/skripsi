@@ -16,7 +16,8 @@
     <!-- Menu CSS -->
     <link href="<?php echo base_url('/assets/bower_components/morrisjs/morris.css')?>" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="<?php echo base_url('/assets/css/style.css" rel="stylesheet')?>">
+    <link href="<?php echo base_url('/assets/css/style.css')?>" rel="stylesheet">
+    <link href="<?php echo base_url('/assets/css/additional-style.css')?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -51,8 +52,16 @@
                             <a href=""><i class="ti-search"></i></a>
                         </form>
                     </li>
-                    <li>
-                        <a class="profile-pic" href="#"> <img src="<?php echo base_url('/assets/images/users/hritik.jpg')?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $user_data['nama_admin']?></b> </a>
+                    <li class="dropdown-user">
+                        <a class="profile-pic" href="#"> 
+                            <img src="<?php echo base_url('/assets/images/users/hritik.jpg')?>" alt="user-img" width="36" class="img-circle">
+                            <b class="hidden-xs">
+                                <?php echo $user_data['nama_admin']?>
+                            </b> 
+                        </a>
+                        <div id="dropdown-user-content" class="dropdown-content hide">
+                            <a href="<?php echo base_url('Login_controller/logout')?>">Logout</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -92,12 +101,10 @@
     <script src="<?php echo base_url('/assets/js/jquery.nicescroll.js')?>"></script>
     <!--Morris JavaScript -->
     <script src="<?php echo base_url('/assets/bower_components/raphael/raphael-min.js')?>"></script>
-    <script src="<?php echo base_url('/assets/bower_components/morrisjs/morris.js')?>"></script>
     <!--Wave Effects -->
     <script src="<?php echo base_url('/assets/js/waves.js')?>"></script>
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url('/assets/js/myadmin.js')?>"></script>
-    <script src="<?php echo base_url('/assets/js/dashboard1.js')?>"></script>
 </body>
 
 </html>

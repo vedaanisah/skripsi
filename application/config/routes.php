@@ -51,7 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['data-pasien'] = 'Main_controller/halaman4';
+$route['administrator-page'] = 'Main_controller';
+$route['login-page'] = 'Login_controller';
 
-$route['default_controller'] = 'Main_Controller';
+$route['default_controller'] = 'Login_controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -7,6 +7,7 @@ class Main_Controller extends CI_Controller{
         $this->load->model([
             'M_login','M_knn','M_user',"M_admin"
         ]);
+        $this->load->helper(['authentification_helper']);
     }
 
     /* load pertama */
@@ -73,6 +74,11 @@ class Main_Controller extends CI_Controller{
     }
 
     function index(){
+        /* Jika user langsung membuka halaman padahal status session false, maka akan dilempar ke halaman login */
+        if(empty($this->session->userdata('userdata')) || !$this->session->has_userdata('userdata')){
+            $data['userdata'] = false;
+            redirect('login-page', $data);
+        }
         $this->load->view('dashboard');
     }
 
