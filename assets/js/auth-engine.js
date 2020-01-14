@@ -6,9 +6,9 @@ $(document).ready(function(){
         if(_form_login.length != ''){
             _form_login.find('.btn-login-submit')
                 .on('click', function(){
-                    var url = _form_login.getAttribute('action').val();
+                    var _url = _form_login.data('target-url');
                     $.ajax({
-                        url: url,
+                        url: _url,
                         type: 'POST',
                         data: {
                             'username': _form_login.find('.username').val(),

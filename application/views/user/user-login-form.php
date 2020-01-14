@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/formlogin/css/style.css')?>" media="screen" type="text/css" />
 </head>
 <body class="login-form">
-    <div class="notification ">
+    <div class="notification hide">
         <div class="alert alert-danger" role="alert">
         You got the wrong <strong>Username or Password</strong>!
         </div>
@@ -16,7 +16,7 @@
 
     <div class="login-card">
         <h1>Log In</h1><br>
-        <form class="form-login" method="POST" action="<?php echo base_url('Login_controller/login')?>">
+        <form class="form-login" method="POST" data-target-url="<?php echo base_url('Login_controller/login')?>">
 			<div class="wrap-input validate-input">
                 <span><i class="fa fa"></i></span>
 				<input class="input" type="text" name="username" id="username" placeholder="username">

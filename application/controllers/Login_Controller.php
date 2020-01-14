@@ -29,7 +29,7 @@ class Login_Controller extends CI_Controller{
 			$this->session->set_userdata('userdata', $user_data);
 			redirect('administrator-page');
 		}
-		$this->load->view('user/user-login-form', $user_data);
+		$this->load->view('user/user-login-form');
 	}
 
 	function logout(){
